@@ -7,6 +7,7 @@ import renderLookbook from './lookbook'
 import createClient from './data'
 import {coroutine as co} from 'bluebird'
 import createMainLoop from 'main-loop'
+import {renderImage} from './elements'
 
 
 function createLoop () {
@@ -48,7 +49,8 @@ var boot = co(function *() {
   let lookbooks = yield client.getLookbooks()
 
   return show(h('.app', [
-    renderLookbook(lookbooks[1])
+    renderLookbookIndex(lookbooks)
+    // renderLookbook(lookbooks[1])
   ]))
 })
 
@@ -57,6 +59,19 @@ boot()
 .catch((e) => {
   console.error(e)
 })
+
+function renderLookbookIndex (lookbooks) {
+  return h('.lb-index', lookbooks.map((lookbook) => {
+    let href = `#${lookbook.fields.slug}`
+    return h('a.lb-index__item', {href}, [
+      renderImage(lookbook.fields.coverImage),
+      h('.lb-index__caption', [
+        h('h1.lb-index__title', [lookbook.fields.title]),
+        h('.lb-index__subtitle', [lookbook.fields.deck])
+      ])
+    ])
+  }))
+}
 
 
 function renderSetup () {

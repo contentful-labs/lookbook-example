@@ -14,6 +14,8 @@ $rhythm(n = 1)
 $rel-rhythm(n = 1)
   n * $base-line-factor * 1em;
 
+$small-font-size = (13/17) * 1em
+
 html, body
   font-family: "Merriweather"
   font-size: $base-font-size
@@ -33,12 +35,12 @@ img
   display: flex
   flex-direction: column
   align-items: center
-  max-width: 50rem
   margin: auto
+
+.lookbook
   max-width: 75ex
   padding: 0 2rem
   box-sizing: content-box
-
 
 .lookbook__title
   font-size: 3em
@@ -76,7 +78,7 @@ img
 
 
 .lb-photo-products
-  font-size: (13/17) * 1em
+  font-size: $small-font-size
   display: flex
   padding: $rel-rhythm(1) 0
   border-bottom: 1px solid hsl(0, 0%, 87%)
@@ -93,3 +95,37 @@ img
 
   &__name
     color: hsl(0, 0%, 40%)
+
+$paper-shadow()
+  box-shadow: 0 3px 12px 0 rgba(black, 0.16),
+              0 3px 12px 0 rgba(black, 0.23)
+
+.lb-index
+  max-width: 60em
+  padding: 0 1em
+
+  &__item
+    transition: box-shadow 0.4s
+    display: block
+    position: relative
+    margin: $rhythm(2) 0
+    $paper-shadow()
+
+
+  &__caption
+    transition: background 0.2s linear
+    &
+      background: hsla(0, 0%, 0%, 0.75)
+    .lb-index:hover &
+      background: hsla(0, 0%, 8%, 0.75)
+
+    color: white
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    padding: 2rem
+
+  &__title
+    font-size: (30 / $base-font-size) em
+    font-weight: bolder

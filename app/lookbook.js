@@ -1,6 +1,7 @@
 import h from 'virtual-dom/h'
 import marked from 'marked'
 import virtualize from 'vdom-virtualize'
+import {renderImage} from './elements'
 
 export default function renderLookbook (lookbook) {
   return h('div.lookbook', [
@@ -75,16 +76,6 @@ function getAlignment (module) {
   return (alignment || 'left').toLowerCase();
 }
 
-
-function renderImage (klass, asset) {
-  if (typeof klass !== 'string') {
-    asset = klass;
-  }
-  return h(`img${klass}`, {
-    src: asset.fields.file.url,
-    alt: asset.fields.title
-  })
-}
 
 
 function parseMarkdown (md) {
