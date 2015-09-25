@@ -14,6 +14,8 @@ $rhythm(n = 1)
 $rel-rhythm(n = 1)
   n * $base-line-factor * 1em;
 
+$small-font-size = (13/17) * 1em
+
 html, body
   font-family: "Merriweather"
   font-size: $base-font-size
@@ -33,10 +35,12 @@ img
   display: flex
   flex-direction: column
   align-items: center
-  max-width: 50rem
   margin: auto
-  padding: 0 2rem
 
+.lookbook
+  max-width: 75ex
+  padding: 0 2rem
+  box-sizing: content-box
 
 .lookbook__title
   font-size: 3em
@@ -50,35 +54,63 @@ img
   margin-bottom: $rhythm(2)
   text-align: center
 
+.lookbook__menu
+  font-size: $small-font-size
+  display: flex
+  justify-content: flex-end
+  padding: $rel-rhythm(0.5) 0
+  border-bottom: 1px solid hsl(0, 0%, 80%)
 
 .lb-module.x--text
   max-width: 75ex
   margin: $rhythm(2) auto
 
+.md-content
   em
     font-style: italic
   p
     margin-bottom: $rhythm(1)
 
+  h2
+    margin-bottom: $rhythm(1)
 
 
+.lb-module
+  margin-bottom: $rhythm(2)
+
+  &.x--2up > .lb-slot
+    width: 50%
+
+  &.x--3up > .lb-slot
+    width: 50%
+
+  &.x--photo > .lb-slot.x--text
+    margin: auto
+    padding: 0 2em
+
+  &.x--credits
+    text-align: center
+    color: hsl(0, 0%, 50%)
+    p
+      margin: 0
 .lb-module.x--photo
   display: flex
-  flex-direction: column
-  align-items: center
+  align-items: stretch
+
+
 
 
 .lb-section-photo
-  width: calc(100% + 4em)
+  width: calc(100% + 8rem)
   border-radius: 10px
 
 
 .lb-photo-products
-  margin: $rel-rhythm(1) 0
-  font-size: (13/17) * 1em
+  font-size: $small-font-size
   display: flex
-  // flex-wrap: wrap
-  // text-align: center
+  padding: $rel-rhythm(1) 0
+  border-bottom: 1px solid hsl(0, 0%, 87%)
+
   &__item
     width: 25%
     flex: 0 0 auto
@@ -91,3 +123,37 @@ img
 
   &__name
     color: hsl(0, 0%, 40%)
+
+$paper-shadow()
+  box-shadow: 0 3px 12px 0 rgba(black, 0.16),
+              0 3px 12px 0 rgba(black, 0.23)
+
+.lb-index
+  max-width: 60em
+  padding: 0 1em
+
+  &__item
+    transition: box-shadow 0.4s
+    display: block
+    position: relative
+    margin: $rhythm(2) 0
+    $paper-shadow()
+
+
+  &__caption
+    transition: background 0.2s linear
+    &
+      background: hsla(0, 0%, 0%, 0.75)
+    .lb-index:hover &
+      background: hsla(0, 0%, 8%, 0.75)
+
+    color: white
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    padding: 2rem
+
+  &__title
+    font-size: (30 / $base-font-size) em
+    font-weight: bolder
