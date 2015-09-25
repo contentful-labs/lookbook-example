@@ -61,9 +61,11 @@ img
   padding: $rel-rhythm(0.5) 0
   border-bottom: 1px solid hsl(0, 0%, 80%)
 
+.lb-section.x--text,
 .lb-module.x--text
   max-width: 75ex
   margin: $rhythm(2) auto
+
 
 .md-content
   em
@@ -93,14 +95,18 @@ img
     color: hsl(0, 0%, 50%)
     p
       margin: 0
+
+
 .lb-module.x--photo
   display: flex
   align-items: stretch
 
+.lb-section.x--photo
+  display: flex
+  align-items: center
+  flex-direction: column
 
-
-
-.lb-section-photo
+.lb-section__photo
   width: calc(100% + 8rem)
   border-radius: 10px
 
