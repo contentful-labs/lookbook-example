@@ -4,7 +4,6 @@ import virtualize from 'vdom-virtualize'
 import {renderImage} from './elements'
 
 export default function renderLookbook (lookbook) {
-  console.log(lookbook)
   return h('.lookbook', [
     h('.lookbook__menu', [
       h('a', {href: '#'}, ['back'])
@@ -105,8 +104,8 @@ function getCTName (entry) {
 
 
 function renderPhotoSection (section) {
-  return h('.lb-module.x--photo', [
-    renderImage('.lb-section-photo', section.fields.photos[0]),
+  return h('.lb-section.x--photo', [
+    renderImage('.lb-section__photo', section.fields.photos[0]),
     h('.lb-photo-products',
       section.fields.associatedProducts.map(renderProduct)
     )
@@ -125,7 +124,7 @@ function renderProduct (product) {
 
 
 function renderTextSection (section) {
-  return h('.lb-module.x--text', {
+  return h('.lb-section.x--text', {
     style: {
       textAlign: getAlignment(section)
     }
