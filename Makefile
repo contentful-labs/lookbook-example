@@ -28,4 +28,5 @@ deploy: app styles
 	git merge master
 	git add --force styles.css application.js
 	git commit --message 'build application'
+	git push
 	git checkout master
