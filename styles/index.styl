@@ -54,22 +54,50 @@ img
   margin-bottom: $rhythm(2)
   text-align: center
 
+.lookbook__menu
+  font-size: $small-font-size
+  display: flex
+  justify-content: flex-end
+  padding: $rel-rhythm(0.5) 0
+  border-bottom: 1px solid hsl(0, 0%, 80%)
 
 .lb-module.x--text
   max-width: 75ex
   margin: $rhythm(2) auto
 
+.md-content
   em
     font-style: italic
   p
     margin-bottom: $rhythm(1)
 
+  h2
+    margin-bottom: $rhythm(1)
 
 
+.lb-module
+  margin-bottom: $rhythm(2)
+
+  &.x--2up > .lb-slot
+    width: 50%
+
+  &.x--3up > .lb-slot
+    width: 50%
+
+  &.x--photo > .lb-slot.x--text
+    margin: auto
+    padding: 0 2em
+
+  &.x--credits
+    text-align: center
+    color: hsl(0, 0%, 50%)
+    p
+      margin: 0
 .lb-module.x--photo
   display: flex
-  flex-direction: column
-  align-items: center
+  align-items: stretch
+
+
 
 
 .lb-section-photo

@@ -2,6 +2,7 @@ import h from 'virtual-dom/h'
 import create from 'virtual-dom/create-element'
 import diff from 'virtual-dom/diff'
 import patch from 'virtual-dom/patch'
+import hasher from 'hasher'
 import * as localStore from './local-store'
 import renderLookbook from './lookbook'
 import createClient from './data'
@@ -10,19 +11,6 @@ import createMainLoop from 'main-loop'
 import {renderImage} from './elements'
 
 
-function createLoop () {
-  let loop = createMainLoop(
-    h('div'),
-    (node) => node,
-    { create, diff, patch }
-  )
-
-  document.body.appendChild(loop.target)
-
-  return function update (node) {
-    loop.update(node)
-  }
-}
 
 var boot = co(function *() {
   let show = createLoop();
@@ -46,12 +34,33 @@ var boot = co(function *() {
     return show(renderSetup())
   }
 
+
   let lookbooks = yield client.getLookbooks()
 
-  return show(h('.app', [
-    renderLookbookIndex(lookbooks)
-    // renderLookbook(lookbooks[1])
-  ]))
+  startRouting((path) => {
+    let lb = lookbooks.find((lb) => {
+      return lb.fields.slug === path
+    })
+
+    if (lb) {
+      return renderLookbook(lb)
+    } else {
+      return renderLookbookIndex(lookbooks)
+    }
+  })
+
+
+  function startRouting (route) {
+    hasher.prependHash = ''
+    hasher.init()
+    hasher.initialized.add(dispatch)
+    hasher.changed.add(dispatch)
+
+    function dispatch (path) {
+      document.body.scrollTop = 0
+      show(h('.app', route(path)))
+    }
+  }
 })
 
 
@@ -59,6 +68,22 @@ boot()
 .catch((e) => {
   console.error(e)
 })
+
+
+function createLoop () {
+  let loop = createMainLoop(
+    h('div'),
+    (node) => node,
+    { create, diff, patch }
+  )
+
+  document.body.appendChild(loop.target)
+
+  return function update (node) {
+    loop.update(node)
+  }
+}
+
 
 function renderLookbookIndex (lookbooks) {
   return h('.lb-index', lookbooks.map((lookbook) => {
