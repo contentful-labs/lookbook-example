@@ -1,0 +1,5 @@
+extends: standard
+rules:
+  semi: [0, 'never']
+  no-multiple-empty-lines: 0
+  comma-dangle: 0

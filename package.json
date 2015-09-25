@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "name": "lookbook",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thomas Scholtes",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^5.8.23",
+    "babel-runtime": "^5.8.24",
+    "babelify": "^6.3.0",
+    "bluebird": "^2.10.1",
+    "browserify": "^11.1.0",
+    "browserify-middleware": "^7.0.0",
+    "co": "^4.6.0",
+    "contentful": "^1.1.5",
+    "express": "^4.13.3",
+    "hasher": "^1.2.0",
+    "marked": "^0.3.5",
+    "nib": "^1.1.0",
+    "stylus": "^0.52.4",
+    "vdom-virtualize": "0.0.13",
+    "virtual-dom": "^2.1.1"
+  }
+}
