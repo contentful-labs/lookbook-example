@@ -1,19 +1,36 @@
 import h from 'virtual-dom/h'
 import create from 'virtual-dom/create-element'
+import diff from 'virtual-dom/diff'
+import patch from 'virtual-dom/patch'
 import * as localStore from './local-store'
 import renderLookbook from './lookbook'
 import createClient from './data'
 import {coroutine as co} from 'bluebird'
+import createMainLoop from 'main-loop'
 
 
+function createLoop () {
+  let loop = createMainLoop(
+    h('div'),
+    (node) => node,
+    { create, diff, patch }
+  )
 
+  document.body.appendChild(loop.target)
+
+  return function update (node) {
+    loop.update(node)
+  }
+}
 
 var boot = co(function *() {
+  let show = createLoop();
+
   localStore.loadFromLocation()
   let spaceId = localStore.spaceId.get()
   let apiKey = localStore.apiKey.get()
   if (!apiKey || !spaceId) {
-    return renderSetup()
+    return show(renderSetup())
   }
 
   if (window.location.search) {
@@ -25,21 +42,19 @@ var boot = co(function *() {
   try {
     yield client.getSpace()
   } catch (e) {
-    return renderSetup()
+    return show(renderSetup())
   }
 
   let lookbooks = yield client.getLookbooks()
 
-  return h('.app', [
+  return show(h('.app', [
     renderLookbook(lookbooks[1])
-  ])
+  ]))
 })
 
 
 boot()
-.then((vnode) => {
-  document.body.appendChild(create(vnode))
-}).catch((e) => {
+.catch((e) => {
   console.error(e)
 })
 
