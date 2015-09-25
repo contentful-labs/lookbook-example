@@ -3,6 +3,10 @@ export PATH := ./node_modules/.bin/:${PATH}
 .PHONY: all
 all: app styles
 
+.PHONY: serve
+serve:
+	babel-node serve.js
+
 .PHONY: app
 app:
 	browserify \
@@ -18,3 +22,10 @@ styles:
 		< styles/index.styl \
 		> styles.css
 
+.PHONY: deploy
+deploy: app styles
+	git checkout gh-pages
+	git merge master
+	git add --force styles.css application.js
+	git commit --message 'build application'
+	git checkout master

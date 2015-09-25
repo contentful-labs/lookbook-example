@@ -1,0 +1,93 @@
+@import 'nib'
+
+global-reset()
+*
+  box-sizing: border-box
+
+$base-font-size = 17px
+$base-line-factor = (25/17)
+$base-line-height = $base-line-factor * 1rem
+
+$rhythm(n = 1)
+  n * $base-line-height;
+
+$rel-rhythm(n = 1)
+  n * $base-line-factor * 1em;
+
+html, body
+  font-family: "Merriweather"
+  font-size: $base-font-size
+  line-height: $base-line-factor
+  color: hsl(0, 0%, 10%)
+
+img
+  display: block
+  width: 100%
+
+
+.app-setup__space-field
+  margin-bottom: 1em
+
+
+.app
+  display: flex
+  flex-direction: column
+  align-items: center
+  max-width: 50rem
+  margin: auto
+  padding: 0 2rem
+
+
+.lookbook__title
+  font-size: 3em
+  font-weight: 300
+  font-style: italic
+  margin-bottom: $rhythm(1)
+
+
+.lookbook__header
+  margin-top: $rhythm(2)
+  margin-bottom: $rhythm(2)
+  text-align: center
+
+
+.lb-module.x--text
+  max-width: 75ex
+  margin: $rhythm(2) auto
+
+  em
+    font-style: italic
+  p
+    margin-bottom: $rhythm(1)
+
+
+
+.lb-module.x--photo
+  display: flex
+  flex-direction: column
+  align-items: center
+
+
+.lb-section-photo
+  width: calc(100% + 4em)
+  border-radius: 10px
+
+
+.lb-photo-products
+  margin: $rel-rhythm(1) 0
+  font-size: (13/17) * 1em
+  display: flex
+  // flex-wrap: wrap
+  // text-align: center
+  &__item
+    width: 25%
+    flex: 0 0 auto
+    padding-right: 1em
+
+  &__brand
+    text-transform: uppercase
+    font-weight: 600
+    margin-bottom: $rel-rhythm(0.5)
+
+  &__name
+    color: hsl(0, 0%, 40%)
