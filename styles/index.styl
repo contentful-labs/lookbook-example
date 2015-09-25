@@ -35,7 +35,9 @@ img
   align-items: center
   max-width: 50rem
   margin: auto
+  max-width: 75ex
   padding: 0 2rem
+  box-sizing: content-box
 
 
 .lookbook__title
@@ -69,16 +71,16 @@ img
 
 
 .lb-section-photo
-  width: calc(100% + 4em)
+  width: calc(100% + 8rem)
   border-radius: 10px
 
 
 .lb-photo-products
-  margin: $rel-rhythm(1) 0
   font-size: (13/17) * 1em
   display: flex
-  // flex-wrap: wrap
-  // text-align: center
+  padding: $rel-rhythm(1) 0
+  border-bottom: 1px solid hsl(0, 0%, 87%)
+
   &__item
     width: 25%
     flex: 0 0 auto
