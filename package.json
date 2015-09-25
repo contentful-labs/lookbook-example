@@ -3,11 +3,11 @@
   "name": "lookbook",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Thomas Scholtes",
+  "author": "Thomas Scholtes <thomas@contentful.com>",
+  "homepage": "https://github.com/contentful-labs/lookbook-example",
   "license": "ISC",
   "dependencies": {
     "babel": "^5.8.23",
