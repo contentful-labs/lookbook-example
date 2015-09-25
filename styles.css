@@ -127,9 +127,14 @@ img {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  max-width: 50rem;
   margin: auto;
+}
+.lookbook {
+  max-width: 75ex;
   padding: 0 2rem;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
 }
 .lookbook__title {
   font-size: 3em;
@@ -142,15 +147,56 @@ img {
   margin-bottom: 2.941176470588236rem;
   text-align: center;
 }
+.lookbook__menu {
+  font-size: 0.764705882352941em;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: end;
+  -moz-box-pack: end;
+  -o-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+  padding: 0.735294117647059em 0;
+  border-bottom: 1px solid #ccc;
+}
+.lb-section.x--text,
 .lb-module.x--text {
   max-width: 75ex;
   margin: 2.941176470588236rem auto;
 }
-.lb-module.x--text em {
+.md-content em {
   font-style: italic;
 }
-.lb-module.x--text p {
+.md-content p {
   margin-bottom: 1.470588235294118rem;
+}
+.md-content h2 {
+  margin-bottom: 1.470588235294118rem;
+}
+.lb-module {
+  margin-bottom: 2.941176470588236rem;
+}
+.lb-module.x--2up > .lb-slot {
+  width: 50%;
+}
+.lb-module.x--3up > .lb-slot {
+  width: 50%;
+}
+.lb-module.x--photo > .lb-slot.x--text {
+  margin: auto;
+  padding: 0 2em;
+}
+.lb-module.x--credits {
+  text-align: center;
+  color: #808080;
+}
+.lb-module.x--credits p {
+  margin: 0;
 }
 .lb-module.x--photo {
   display: -webkit-box;
@@ -159,26 +205,39 @@ img {
   display: -ms-flexbox;
   display: box;
   display: flex;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  -o-box-orient: vertical;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  -webkit-box-align: stretch;
+  -moz-box-align: stretch;
+  -o-box-align: stretch;
+  -ms-flex-align: stretch;
+  -webkit-align-items: stretch;
+  align-items: stretch;
+}
+.lb-section.x--photo {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
   -webkit-box-align: center;
   -moz-box-align: center;
   -o-box-align: center;
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -o-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
-.lb-section-photo {
-  width: calc(100% + 4em);
+.lb-section__photo {
+  width: calc(100% + 8rem);
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }
 .lb-photo-products {
-  margin: 1.470588235294118em 0;
   font-size: 0.764705882352941em;
   display: -webkit-box;
   display: -moz-box;
@@ -186,6 +245,8 @@ img {
   display: -ms-flexbox;
   display: box;
   display: flex;
+  padding: 1.470588235294118em 0;
+  border-bottom: 1px solid #dedede;
 }
 .lb-photo-products__item {
   width: 25%;
@@ -205,5 +266,44 @@ img {
 }
 .lb-photo-products__name {
   color: #666;
+}
+.lb-index {
+  max-width: 60em;
+  padding: 0 1em;
+}
+.lb-index__item {
+  -webkit-transition: box-shadow 0.4s;
+  -moz-transition: box-shadow 0.4s;
+  -o-transition: box-shadow 0.4s;
+  -ms-transition: box-shadow 0.4s;
+  transition: box-shadow 0.4s;
+  display: block;
+  position: relative;
+  margin: 2.941176470588236rem 0;
+  -webkit-box-shadow: 0 3px 12px 0 rgba(0,0,0,0.16), 0 3px 12px 0 rgba(0,0,0,0.23);
+  box-shadow: 0 3px 12px 0 rgba(0,0,0,0.16), 0 3px 12px 0 rgba(0,0,0,0.23);
+}
+.lb-index__caption {
+  -webkit-transition: background 0.2s linear;
+  -moz-transition: background 0.2s linear;
+  -o-transition: background 0.2s linear;
+  -ms-transition: background 0.2s linear;
+  transition: background 0.2s linear;
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+}
+.lb-index__caption {
+  background: rgba(0,0,0,0.75);
+}
+.lb-index:hover .lb-index__caption {
+  background: rgba(20,20,20,0.75);
+}
+.lb-index__title {
+  font-size: 1.764705882352941em;
+  font-weight: bolder;
 }
 
