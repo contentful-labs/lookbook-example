@@ -23,9 +23,10 @@ styles:
 		> styles.css
 
 .PHONY: deploy
-deploy: app styles
+deploy:
 	git checkout gh-pages
 	git merge master
+	make all
 	git add --force styles.css application.js
 	git commit --message 'build application'
 	git push
