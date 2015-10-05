@@ -68,7 +68,7 @@ function renderQuoteModule (slot) {
 
 function renderTextSlot (slot) {
   return h('.lb-slot.x--text', [
-    h('h3', slot.fields.slotTitle),
+    // h('h3', slot.fields.slotTitle),
     parseMarkdown(slot.fields.text)
   ])
 }
@@ -120,7 +120,7 @@ function renderTextSection (section) {
 
 function renderPhotoSection (section) {
   let headline = section.fields.headline
-  let caption = headline ?  h('.lb-photo-caption', section.fields.headline) : null
+  let caption = headline ? h('.lb-photo-caption', section.fields.headline) : null
   return h('.lb-section.x--photo', [
     renderImage('.lb-section__photo', section.fields.photos[0]),
     caption,
