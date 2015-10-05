@@ -1,0 +1,34 @@
+$paper-shadow()
+  box-shadow: 0 3px 12px 0 rgba(black, 0.16),
+              0 3px 12px 0 rgba(black, 0.23)
+
+
+.lb-index
+  max-width: 60em
+  padding: 0 1em
+
+  &__item
+    transition: box-shadow 0.4s
+    display: block
+    position: relative
+    margin: $rhythm(2) 0
+    $paper-shadow()
+
+
+  &__caption
+    color: white
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    padding: 2rem
+
+    transition: background 0.2s linear
+    &
+      background: hsla(0, 0%, 0%, 0.75)
+    .lb-index:hover &
+      background: hsla(0, 0%, 8%, 0.75)
+
+  &__title
+    font-size: (30 / $base-font-size) em
+    font-weight: bolder

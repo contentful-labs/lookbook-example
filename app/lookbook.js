@@ -31,15 +31,16 @@ function renderModule (module) {
 
 function renderModuleLayout (module) {
   let slots = module.fields.contentSlots
+  let bleed = module.fields.fullBleed
   switch (module.fields.layoutType) {
     case 'Text':
       return renderTextModule(slots)
     case '1up':
-      return renderPhotoModule(slots, 1)
+      return renderPhotoModule(slots, 1, bleed)
     case '2up':
-      return renderPhotoModule(slots, 2)
+      return renderPhotoModule(slots, 2, bleed)
     case '3up':
-      return renderPhotoModule(slots, 3)
+      return renderPhotoModule(slots, 3, bleed)
     case 'Quote':
       return renderQuoteModule(slots[0])
     case 'Credits':
@@ -72,12 +73,15 @@ function renderTextSlot (slot) {
   ])
 }
 
-function renderPhotoModule (slots, items) {
+function renderPhotoModule (slots, items, bleed) {
   let modifier = `.x--photo.x--${items}up`
+  if (bleed) {
+    modifier += '.x--bleed'
+  }
   return h(`.lb-module${modifier}`, slots.map((slot) => {
     let photo = slot.fields.photos && slot.fields.photos[0]
     if (photo) {
-      return h(`.lb-slot.x--photo${modifier}`, [
+      return h(`.lb-slot.x--photo`, [
         renderImage(photo)
       ])
     } else {
@@ -103,6 +107,17 @@ function getCTName (entry) {
 }
 
 
+function renderTextSection (section) {
+  return h('.lb-section.x--text', {
+    style: {
+      textAlign: getAlignment(section)
+    }
+  }, [
+    parseMarkdown(section.fields.textParagraphQuote)
+  ])
+}
+
+
 function renderPhotoSection (section) {
   return h('.lb-section.x--photo', [
     renderImage('.lb-section__photo', section.fields.photos[0]),
@@ -122,16 +137,6 @@ function renderProduct (product) {
   ])
 }
 
-
-function renderTextSection (section) {
-  return h('.lb-section.x--text', {
-    style: {
-      textAlign: getAlignment(section)
-    }
-  }, [
-    parseMarkdown(section.fields.textParagraphQuote)
-  ])
-}
 
 
 function getAlignment (module) {

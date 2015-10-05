@@ -18,7 +18,7 @@ express()
     return B.fromNode((cb)=> {
       stylus(content)
       .use(nib())
-      .set({filename: './styles/index.styl'})
+      .set('filename', './styles/index.styl')
       .render(cb)
     })
   })
