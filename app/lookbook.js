@@ -119,8 +119,11 @@ function renderTextSection (section) {
 
 
 function renderPhotoSection (section) {
+  let headline = section.fields.headline
+  let caption = headline ?  h('.lb-photo-caption', section.fields.headline) : null
   return h('.lb-section.x--photo', [
     renderImage('.lb-section__photo', section.fields.photos[0]),
+    caption,
     h('.lb-photo-products',
       section.fields.associatedProducts.map(renderProduct)
     )
