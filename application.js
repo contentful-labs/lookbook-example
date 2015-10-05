@@ -304,15 +304,16 @@ function renderModule(module) {
 
 function renderModuleLayout(module) {
   var slots = module.fields.contentSlots;
+  var bleed = module.fields.fullBleed;
   switch (module.fields.layoutType) {
     case 'Text':
       return renderTextModule(slots);
     case '1up':
-      return renderPhotoModule(slots, 1);
+      return renderPhotoModule(slots, 1, bleed);
     case '2up':
-      return renderPhotoModule(slots, 2);
+      return renderPhotoModule(slots, 2, bleed);
     case '3up':
-      return renderPhotoModule(slots, 3);
+      return renderPhotoModule(slots, 3, bleed);
     case 'Quote':
       return renderQuoteModule(slots[0]);
     case 'Credits':
@@ -335,15 +336,20 @@ function renderQuoteModule(slot) {
 }
 
 function renderTextSlot(slot) {
-  return (0, _virtualDomH2['default'])('.lb-slot.x--text', [(0, _virtualDomH2['default'])('h3', slot.fields.slotTitle), parseMarkdown(slot.fields.text)]);
+  return (0, _virtualDomH2['default'])('.lb-slot.x--text', [
+  // h('h3', slot.fields.slotTitle),
+  parseMarkdown(slot.fields.text)]);
 }
 
-function renderPhotoModule(slots, items) {
+function renderPhotoModule(slots, items, bleed) {
   var modifier = '.x--photo.x--' + items + 'up';
+  if (bleed) {
+    modifier += '.x--bleed';
+  }
   return (0, _virtualDomH2['default'])('.lb-module' + modifier, slots.map(function (slot) {
     var photo = slot.fields.photos && slot.fields.photos[0];
     if (photo) {
-      return (0, _virtualDomH2['default'])('.lb-slot.x--photo' + modifier, [(0, _elements.renderImage)(photo)]);
+      return (0, _virtualDomH2['default'])('.lb-slot.x--photo', [(0, _elements.renderImage)(photo)]);
     } else {
       return renderTextSlot(slot);
     }
@@ -365,22 +371,24 @@ function getCTName(entry) {
   return contentTypes[ctID];
 }
 
-function renderPhotoSection(section) {
-  return (0, _virtualDomH2['default'])('.lb-section.x--photo', [(0, _elements.renderImage)('.lb-section__photo', section.fields.photos[0]), (0, _virtualDomH2['default'])('.lb-photo-products', section.fields.associatedProducts.map(renderProduct))]);
-}
-
-function renderProduct(product) {
-  var brand = product.fields.brand;
-
-  return (0, _virtualDomH2['default'])('.lb-photo-products__item', [(0, _virtualDomH2['default'])('.lb-photo-products__brand', brand.fields.name), (0, _virtualDomH2['default'])('.lb-photo-products__name', product.fields.name)]);
-}
-
 function renderTextSection(section) {
   return (0, _virtualDomH2['default'])('.lb-section.x--text', {
     style: {
       textAlign: getAlignment(section)
     }
   }, [parseMarkdown(section.fields.textParagraphQuote)]);
+}
+
+function renderPhotoSection(section) {
+  var headline = section.fields.headline;
+  var caption = headline ? (0, _virtualDomH2['default'])('.lb-photo-caption', section.fields.headline) : null;
+  return (0, _virtualDomH2['default'])('.lb-section.x--photo', [(0, _elements.renderImage)('.lb-section__photo', section.fields.photos[0]), caption, (0, _virtualDomH2['default'])('.lb-photo-products', section.fields.associatedProducts.map(renderProduct))]);
+}
+
+function renderProduct(product) {
+  var brand = product.fields.brand;
+
+  return (0, _virtualDomH2['default'])('.lb-photo-products__item', [(0, _virtualDomH2['default'])('.lb-photo-products__brand', brand.fields.name), (0, _virtualDomH2['default'])('.lb-photo-products__name', product.fields.name)]);
 }
 
 function getAlignment(module) {
