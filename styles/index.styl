@@ -98,6 +98,10 @@ $lookbook-slice()
   &.x--3up > .lb-slot
     width: 50%
 
+  &.x--photo
+    display: flex
+    align-items: stretch
+
   &.x--photo > .lb-slot.x--text
     margin: auto
     padding: 0 2em
@@ -116,11 +120,10 @@ $lookbook-slice()
       text-transform: uppercase
 
 
-.lb-module.x--photo
-  display: flex
-  align-items: stretch
+.lb-section
+  margin-bottom: $rhythm(2)
+  $lookbook-slice()
 
-.lb-section.x--photo
   display: flex
   align-items: center
   flex-direction: column
