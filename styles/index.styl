@@ -16,6 +16,10 @@ $rel-rhythm(n = 1)
 
 $small-font-size = (13/17) * 1em
 
+$link-reset()
+  color: inherit
+  text-decoration: inherit
+
 html, body
   font-family: "Merriweather"
   font-size: $base-font-size
@@ -48,7 +52,8 @@ img
 
 $lookbook-slice()
   width: 48rem
-  padding: 0 2rem
+  padding-left: 2rem
+  padding-right: 2rem
   margin-left: auto
   margin-right: auto
   box-sizing: content-box
@@ -99,8 +104,12 @@ $lookbook-slice()
     width: 50%
 
   &.x--photo
-    display: flex
-    align-items: stretch
+    > .lb-module__slots
+      display: flex
+      align-items: stretch
+    > .lb-photo-products
+      $lookbook-slice()
+
 
   &.x--photo > .lb-slot.x--text
     margin: auto
@@ -152,9 +161,28 @@ $lookbook-slice()
   border-bottom: 1px solid hsl(0, 0%, 87%)
 
   &__item
+    $link-reset()
+    position: relative
     width: 25%
     flex: 0 0 auto
     padding-right: 1em
+    &:hover img
+      opacity: 1
+
+  &__image
+    position: absolute
+    height: 0
+    left: -1em
+    width: 100%
+    > img
+      transition: opacity 0.2s ease-in
+      opacity: 0
+      position: absolute
+      bottom: $rel-rhythm(1)
+      padding: 1em
+      background: white
+      border-radius: 5px 5px 0 0
+      box-shadow: 0 -3px 6px hsla(black, 0.24)
 
   &__brand
     text-transform: uppercase
