@@ -1,0 +1,70 @@
+{
+  "name": "LB Section-photo",
+  "description": "Child content type for lookbook sections consisting of photos",
+  "displayField": "sectionTitle",
+  "fields": [
+    {
+      "name": "Section title",
+      "id": "sectionTitle",
+      "type": "Symbol",
+      "validations": []
+    },
+    {
+      "name": "Headline",
+      "id": "headline",
+      "type": "Symbol"
+    },
+    {
+      "name": "Photos",
+      "id": "photos",
+      "type": "Array",
+      "items": {
+        "type": "Link",
+        "linkType": "Asset"
+      }
+    },
+    {
+      "name": "Associated products",
+      "id": "associatedProducts",
+      "type": "Array",
+      "items": {
+        "type": "Link",
+        "linkType": "Entry",
+        "validations": [
+          {
+            "linkContentType": [
+              "5xhSH7kKDCcm4kyyqAQ2Ga"
+            ]
+          }
+        ]
+      },
+      "validations": [
+        {
+          "size": {
+            "min": null,
+            "max": 4
+          }
+        }
+      ]
+    },
+    {
+      "name": "Call-to-action (CTA)",
+      "id": "callToActionCta",
+      "type": "Link",
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": [
+            "6kGap07sIw62MY6UyOSw8C"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Promoted URL",
+      "id": "promotedUrl",
+      "type": "Symbol",
+      "validations": []
+    }
+  ],
+}

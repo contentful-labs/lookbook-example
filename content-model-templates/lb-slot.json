@@ -1,0 +1,52 @@
+{
+  "name": "LB Slot",
+  "description": "Low-level content type for individual lookbook elements",
+  "displayField": "slotTitle",
+  "fields": [
+    {
+      "name": "Slot title",
+      "id": "slotTitle",
+      "type": "Symbol"
+    },
+    {
+      "name": "Embeddable link (video, audio)",
+      "id": "embeddableLinkVideoAudio",
+      "type": "Symbol",
+      "validations": []
+    },
+    {
+      "name": "Text (paragraph, quote)",
+      "id": "text",
+      "type": "Text",
+      "validations": []
+    },
+    {
+      "name": "Photos",
+      "id": "photos",
+      "type": "Array",
+      "items": {
+        "type": "Link",
+        "linkType": "Asset"
+      }
+    },
+    {
+      "name": "Associated product IDs",
+      "id": "associatedProductIDs",
+      "type": "Symbol",
+      "validations": []
+    },
+    {
+      "name": "Call-to-action (CTA)",
+      "id": "callToActionCta",
+      "type": "Link",
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": [
+            "6kGap07sIw62MY6UyOSw8C"
+          ]
+        }
+      ]
+    }
+  ],
+}

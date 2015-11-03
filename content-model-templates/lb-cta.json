@@ -1,0 +1,24 @@
+{
+  "name": "LB CTA",
+  "description": "Call-to-action links/buttons used throughout the lookbook",
+  "displayField": "text",
+  "fields": [
+    {
+      "name": "Text",
+      "id": "text",
+      "type": "Symbol"
+    },
+    {
+      "name": "Link",
+      "id": "link",
+      "type": "Symbol",
+      "validations": [
+        {
+          "regexp": {
+            "pattern": "^(ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?$"
+          }
+        }
+      ]
+    }
+  ],
+}

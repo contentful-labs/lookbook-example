@@ -1,0 +1,88 @@
+{
+  "name": "Product",
+  "description": "Content type for storing merchandise info",
+  "displayField": "name",
+  "fields": [
+    {
+      "name": "Name",
+      "id": "name",
+      "type": "Symbol"
+    },
+    {
+      "name": "Brand",
+      "id": "brand",
+      "type": "Link",
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": [
+            "3WucRVphBY6oOOGcwM6a4S"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ID",
+      "id": "id",
+      "type": "Symbol"
+    },
+    {
+      "name": "URL",
+      "id": "url",
+      "type": "Symbol",
+      "validations": [
+        {
+          "regexp": {
+            "pattern": "^(ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?$"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Photos",
+      "id": "photos",
+      "type": "Array",
+      "items": {
+        "type": "Link",
+        "linkType": "Asset"
+      }
+    },
+    {
+      "name": "Regular price ($)",
+      "id": "regularPrice",
+      "type": "Number",
+      "validations": []
+    },
+    {
+      "name": "Discounted price ($)",
+      "id": "discountedPrice",
+      "type": "Number",
+      "validations": []
+    },
+    {
+      "name": "Sold out?",
+      "id": "soldOut",
+      "type": "Boolean",
+      "validations": []
+    },
+    {
+      "name": "Description",
+      "id": "description",
+      "type": "Text"
+    },
+    {
+      "name": "Related products",
+      "id": "relatedProducts",
+      "type": "Array",
+      "items": {
+        "type": "Link",
+        "linkType": "Entry"
+      }
+    },
+    {
+      "name": "# of favs",
+      "id": "ofFavs",
+      "type": "Integer"
+    }
+  ],
+}
