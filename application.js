@@ -305,11 +305,12 @@ function renderModule(module) {
 function renderModuleLayout(module) {
   var slots = module.fields.contentSlots;
   var bleed = module.fields.fullBleed;
+  var products = module.fields.associatedProdIDs;
   switch (module.fields.layoutType) {
     case 'Text':
       return renderTextModule(slots);
     case '1up':
-      return renderPhotoModule(slots, 1, bleed);
+      return renderPhotoModule(slots, 1, bleed, products);
     case '2up':
       return renderPhotoModule(slots, 2, bleed);
     case '3up':
@@ -342,18 +343,24 @@ function renderTextSlot(slot) {
 }
 
 function renderPhotoModule(slots, items, bleed) {
+  var products = arguments.length <= 3 || arguments[3] === undefined ? [] : arguments[3];
+
   var modifier = '.x--photo.x--' + items + 'up';
   if (bleed) {
     modifier += '.x--bleed';
   }
-  return (0, _virtualDomH2['default'])('.lb-module' + modifier, slots.map(function (slot) {
-    var photo = slot.fields.photos && slot.fields.photos[0];
-    if (photo) {
-      return (0, _virtualDomH2['default'])('.lb-slot.x--photo', [(0, _elements.renderImage)(photo)]);
-    } else {
-      return renderTextSlot(slot);
-    }
-  }));
+
+  var renderedSlots = slots.map(renderPhotoSlot);
+  return (0, _virtualDomH2['default'])('.lb-module' + modifier, [(0, _virtualDomH2['default'])('.lb-module__slots', renderedSlots), (0, _virtualDomH2['default'])('.lb-photo-products', products.map(renderProduct))]);
+}
+
+function renderPhotoSlot(slot) {
+  var photo = slot.fields.photos && slot.fields.photos[0];
+  if (photo) {
+    return (0, _virtualDomH2['default'])('.lb-slot.x--photo', [(0, _elements.renderImage)(photo)]);
+  } else {
+    return renderTextSlot(slot);
+  }
 }
 
 // This is gonna be way easier once CF allows us to set the Content
@@ -387,8 +394,9 @@ function renderPhotoSection(section) {
 
 function renderProduct(product) {
   var brand = product.fields.brand;
+  var brandName = brand && brand.fields.name;
 
-  return (0, _virtualDomH2['default'])('.lb-photo-products__item', [(0, _virtualDomH2['default'])('.lb-photo-products__brand', brand.fields.name), (0, _virtualDomH2['default'])('.lb-photo-products__name', product.fields.name)]);
+  return (0, _virtualDomH2['default'])('a.lb-photo-products__item', { href: product.fields.url }, [(0, _virtualDomH2['default'])('.lb-photo-products__image', [(0, _elements.renderImage)(product.fields.photos[0])]), (0, _virtualDomH2['default'])('.lb-photo-products__brand', brandName || ''), (0, _virtualDomH2['default'])('.lb-photo-products__name', product.fields.name)]);
 }
 
 function getAlignment(module) {

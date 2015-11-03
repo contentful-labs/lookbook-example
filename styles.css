@@ -154,7 +154,8 @@ img {
 }
 .lookbook__header {
   width: 48rem;
-  padding: 0 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   margin-left: auto;
   margin-right: auto;
   -webkit-box-sizing: content-box;
@@ -172,7 +173,8 @@ img {
 }
 .lookbook__menu {
   width: 48rem;
-  padding: 0 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   margin-left: auto;
   margin-right: auto;
   -webkit-box-sizing: content-box;
@@ -200,7 +202,8 @@ img {
 .lb-module {
   margin-bottom: 2.941176470588236rem;
   width: 48rem;
-  padding: 0 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   margin-left: auto;
   margin-right: auto;
   -webkit-box-sizing: content-box;
@@ -218,7 +221,7 @@ img {
 .lb-module.x--3up > .lb-slot {
   width: 50%;
 }
-.lb-module.x--photo {
+.lb-module.x--photo > .lb-module__slots {
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -231,6 +234,16 @@ img {
   -ms-flex-align: stretch;
   -webkit-align-items: stretch;
   align-items: stretch;
+}
+.lb-module.x--photo > .lb-photo-products {
+  width: 48rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
 }
 .lb-module.x--photo > .lb-slot.x--text {
   margin: auto;
@@ -252,7 +265,8 @@ img {
 .lb-section {
   margin-bottom: 2.941176470588236rem;
   width: 48rem;
-  padding: 0 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   margin-left: auto;
   margin-right: auto;
   -webkit-box-sizing: content-box;
@@ -306,6 +320,9 @@ img {
   border-bottom: 1px solid #dedede;
 }
 .lb-photo-products__item {
+  color: inherit;
+  text-decoration: inherit;
+  position: relative;
   width: 25%;
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
@@ -315,6 +332,35 @@ img {
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
   padding-right: 1em;
+}
+.lb-photo-products__item:hover img {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+.lb-photo-products__image {
+  position: absolute;
+  height: 0;
+  left: -1em;
+  width: 100%;
+}
+.lb-photo-products__image > img {
+  -webkit-transition: opacity 0.2s ease-in;
+  -moz-transition: opacity 0.2s ease-in;
+  -o-transition: opacity 0.2s ease-in;
+  -ms-transition: opacity 0.2s ease-in;
+  transition: opacity 0.2s ease-in;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  position: absolute;
+  bottom: 1.470588235294118em;
+  padding: 1em;
+  background: #fff;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  -webkit-box-shadow: 0 -3px 6px rgba(0,0,0,0.24);
+  box-shadow: 0 -3px 6px rgba(0,0,0,0.24);
 }
 .lb-photo-products__brand {
   text-transform: uppercase;
