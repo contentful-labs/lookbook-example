@@ -32,11 +32,12 @@ function renderModule (module) {
 function renderModuleLayout (module) {
   let slots = module.fields.contentSlots
   let bleed = module.fields.fullBleed
+  let products = module.fields.associatedProdIDs
   switch (module.fields.layoutType) {
     case 'Text':
       return renderTextModule(slots)
     case '1up':
-      return renderPhotoModule(slots, 1, bleed)
+      return renderPhotoModule(slots, 1, bleed, products)
     case '2up':
       return renderPhotoModule(slots, 2, bleed)
     case '3up':
@@ -73,21 +74,28 @@ function renderTextSlot (slot) {
   ])
 }
 
-function renderPhotoModule (slots, items, bleed) {
+function renderPhotoModule (slots, items, bleed, products = []) {
   let modifier = `.x--photo.x--${items}up`
   if (bleed) {
     modifier += '.x--bleed'
   }
-  return h(`.lb-module${modifier}`, slots.map((slot) => {
-    let photo = slot.fields.photos && slot.fields.photos[0]
-    if (photo) {
-      return h(`.lb-slot.x--photo`, [
-        renderImage(photo)
-      ])
-    } else {
-      return renderTextSlot(slot)
-    }
-  }))
+
+  let renderedSlots = slots.map(renderPhotoSlot)
+  return h(`.lb-module${modifier}`, [
+    h('.lb-module__slots', renderedSlots),
+    h('.lb-photo-products', products.map(renderProduct))
+  ]);
+}
+
+function renderPhotoSlot (slot) {
+  let photo = slot.fields.photos && slot.fields.photos[0]
+  if (photo) {
+    return h(`.lb-slot.x--photo`, [
+      renderImage(photo)
+    ])
+  } else {
+    return renderTextSlot(slot)
+  }
 }
 
 // This is gonna be way easier once CF allows us to set the Content
@@ -133,9 +141,11 @@ function renderPhotoSection (section) {
 
 function renderProduct (product) {
   let brand = product.fields.brand
+  let brandName = brand && brand.fields.name
 
-  return h('.lb-photo-products__item', [
-    h('.lb-photo-products__brand', brand.fields.name),
+  return h('a.lb-photo-products__item', {href: product.fields.url}, [
+    h('.lb-photo-products__image', [renderImage(product.fields.photos[0])]),
+    h('.lb-photo-products__brand', brandName || ''),
     h('.lb-photo-products__name', product.fields.name)
   ])
 }
