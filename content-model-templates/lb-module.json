@@ -1,0 +1,94 @@
+{
+  "name": "LB Module",
+  "description": "Mid-level content type for controlling layout options",
+  "displayField": "title",
+  "fields": [
+    {
+      "name": "Module title",
+      "id": "title",
+      "type": "Symbol",
+      "validations": []
+    },
+    {
+      "name": "Layout type",
+      "id": "layoutType",
+      "type": "Symbol",
+      "validations": [
+        {
+          "in": [
+            "1up",
+            "2up",
+            "3up",
+            "Text",
+            "Quote",
+            "Credits",
+            "Content-carousele"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Full bleed",
+      "id": "fullBleed",
+      "type": "Boolean",
+      "validations": []
+    },
+    {
+      "name": "Content slots",
+      "id": "contentSlots",
+      "type": "Array",
+      "items": {
+        "type": "Link",
+        "linkType": "Entry",
+        "validations": [
+          {
+            "linkContentType": [
+              "3pR1hcvP8cyuA40IO06YGO"
+            ]
+          }
+        ]
+      },
+      "validations": []
+    },
+    {
+      "name": "Promoted URL",
+      "id": "promotedUrl",
+      "type": "Symbol",
+      "validations": []
+    },
+    {
+      "name": "Associated product IDs",
+      "id": "associatedProductIDs",
+      "type": "Array",
+      "items": {
+        "type": "Symbol",
+        "validations": []
+      },
+      "disabled": true,
+      "validations": []
+    },
+    {
+      "name": "Associated product IDs",
+      "id": "associatedProdIDs",
+      "type": "Array",
+      "items": {
+        "type": "Link",
+        "linkType": "Entry",
+        "validations": [
+          {
+            "linkContentType": [
+              "5xhSH7kKDCcm4kyyqAQ2Ga"
+            ]
+          }
+        ]
+      },
+      "validations": [
+        {
+          "size": {
+            "max": 4
+          }
+        }
+      ]
+    }
+  ],
+}

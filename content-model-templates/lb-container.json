@@ -1,0 +1,70 @@
+{
+  "name": "LB Container",
+  "description": "Top-level content type for meta data and lookbook sections",
+  "displayField": "title",
+  "fields": [
+    {
+      "name": "Title",
+      "id": "title",
+      "type": "Symbol"
+    },
+    {
+      "name": "Deck",
+      "id": "deck",
+      "type": "Symbol",
+      "validations": []
+    },
+    {
+      "name": "Slug",
+      "id": "slug",
+      "type": "Symbol",
+      "validations": [],
+      "required": true
+    },
+    {
+      "name": "Published date",
+      "id": "publishedDate",
+      "type": "Date"
+    },
+    {
+      "name": "Cover image",
+      "id": "coverImage",
+      "type": "Link",
+      "linkType": "Asset",
+      "validations": [],
+      "required": true
+    },
+    {
+      "name": "Custom styles",
+      "id": "customStyles",
+      "type": "Symbol"
+    },
+    {
+      "name": "Lookbook modules",
+      "id": "lookbookModules",
+      "type": "Array",
+      "items": {
+        "type": "Link",
+        "linkType": "Entry",
+        "validations": [
+          {
+            "linkContentType": [
+              "624zcVB7QQESKYQkKMcgGM",
+              "6BkIYBtj44iOK62cC8IEkE",
+              "3JCsfadVjyK6AuEqsWS6ka"
+            ]
+          }
+        ]
+      },
+      "validations": [
+        {
+          "size": {
+            "min": 1
+          },
+          "message": "You cannot publish an empty lookbook. Attach at least one section. Use dummy sections during the prep phase."
+        }
+      ],
+      "required": false
+    }
+  ],
+}

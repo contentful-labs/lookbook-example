@@ -35,3 +35,10 @@ the files you need to use the app in a browser.
 [hosted-example]: https://contentful-labs.github.io/lookbook-example/
 [lookbook-post]: https://www.contentful.com/blog/2015/09/10/creating-a-digital-lookbook/
 [js-client]: https://github.com/contentful/contentful.js
+
+Creating a content model
+----------------------
+
+Create a new space, generate a new API key and follow the instructions in [Contentful space sync][installation-instructions] to copy the content types used in the example app to your space. 
+
+[installation-instructions]: https://github.com/contentful-labs/contentful-space-syncs

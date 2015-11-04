@@ -1,0 +1,29 @@
+{
+  "name": "Brand",
+  "description": "Content type for brand-related info",
+  "displayField": "name",
+  "fields": [
+    {
+      "name": "Name",
+      "id": "name",
+      "type": "Symbol"
+    },
+    {
+      "name": "URL",
+      "id": "url",
+      "type": "Symbol",
+      "validations": []
+    },
+    {
+      "name": "Description",
+      "id": "description",
+      "type": "Text"
+    },
+    {
+      "name": "Logo",
+      "id": "logo",
+      "type": "Link",
+      "linkType": "Asset"
+    }
+  ],
+}

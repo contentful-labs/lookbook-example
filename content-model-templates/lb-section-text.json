@@ -1,0 +1,70 @@
+{
+  "name": "LB Section-text",
+  "description": "Child content type for lookbook sections consisting of text",
+  "displayField": "sectionTitle",
+  "fields": [
+    {
+      "name": "Section title",
+      "id": "sectionTitle",
+      "type": "Symbol"
+    },
+    {
+      "name": "Text (paragraph, quote)",
+      "id": "textParagraphQuote",
+      "type": "Text"
+    },
+    {
+      "name": "Text alignment",
+      "id": "textAlignment",
+      "type": "Symbol",
+      "validations": [
+        {
+          "in": [
+            "Left",
+            "Right",
+            "Center",
+            "Justified",
+            "2-column"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Associated products",
+      "id": "associatedProducts",
+      "type": "Array",
+      "items": {
+        "type": "Link",
+        "linkType": "Entry",
+        "validations": [
+          {
+            "linkContentType": [
+              "5xhSH7kKDCcm4kyyqAQ2Ga"
+            ]
+          }
+        ]
+      },
+      "validations": [],
+      "disabled": true
+    },
+    {
+      "name": "Call-to-action (CTA)",
+      "id": "callToActionCta",
+      "type": "Link",
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": [
+            "6kGap07sIw62MY6UyOSw8C"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Promoted URL",
+      "id": "promotedUrl",
+      "type": "Symbol",
+      "validations": []
+    }
+  ],
+}
